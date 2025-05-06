@@ -30,8 +30,44 @@
 7. 操作畫面左下方的搖桿。
 8. 檢視SUMOBOT是否有移動。
 
+---
+# POP32_V7RC_CONTROL
 
-This repository is for user to control  iNex POP32 SUMBOT via V7RC APP.
+This free development code is designed for use with the iNex POP32 SUMOKIT. You can compile and upload it to your iNex SUMOBOT using the Arduino IDE environment. Once that’s done, you’re ready to control your SUMOBOT with the V7RC APP!
+
+### #Before You Begin
+
+Please prepare a WiFi or Bluetooth development board, or an HC-08 Bluetooth receiver module, and connect it to the TX/RX port of the POP32. We’ll explain the connection method in more detail later. If you don’t have the hardware yet, that’s fine—you can test using Serial Commands for now.
+
+### #Compiling and Uploading
+
+1. Open the Arduino IDE.
+2. Open the `POP32_V7RC_CONTROL.ino` file in this folder.
+3. Connect your iNex POP32 development board and make sure the battery is connected (or use external power) to properly start the POP32 board. (Refer to the manual if needed.)
+4. Compile and upload the firmware to the POP32 board.
+
+### #Testing in Arduino IDE
+
+1. Open the Serial Monitor.
+2. Set the baud rate to **115200**.
+3. In the input field, type: `SRV1000200015001500#` and press **Enter**.
+
+   * You’ll see two green LEDs and two red LEDs turn on for about 0.5 seconds.
+4. Now type: `SRV2000100015001500#` and press **Enter**.
+
+   * The LEDs will turn on again, but in the opposite configuration from step 3.
+5. If you see the LED pattern change as expected, the test is successful.
+
+### #Connecting to V7RC
+
+1. Open the **V7RC APP** (Download it from Google Play or the iOS App Store).
+2. Tap the **Settings** icon (gear icon at the top left).
+3. Select **BLE Settings** to open the Bluetooth selection window.
+4. Choose your Bluetooth device from the list.
+5. Select **Tank Mode**.
+6. Return to the main screen.
+7. Use the joystick at the bottom left of the control screen.
+8. Check if your SUMOBOT moves accordingly.
 
 ## 
 
