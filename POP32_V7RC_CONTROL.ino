@@ -28,9 +28,15 @@ static bool ifLostSignal = true;
 int leftWheel = 0;
 int rightWheel = 0;
 
+#define SERIAL2_RX PB7
+#define SERIAL2_TX PB6
+HardwareSerial Serial2(SERIAL2_RX, SERIAL2_TX);
+
 void setup() 
 {
   Serial.begin(SERIAL_BAUDRATE);
+  Serial2.begin(SERIAL_BAUDRATE);
+
   oled.text(0,0, "V7RC BLE");
   oled.show();
 }
@@ -62,12 +68,12 @@ void loop()
 
   }
   
-  int bufferLength = Serial.available();
+  int bufferLength = Serial2.available();
 
   while(bufferLength > 0){
 
     char tempBuffer[bufferLength];
-    Serial.readBytes(tempBuffer, bufferLength);
+    Serial2.readBytes(tempBuffer, bufferLength);
     
     // Serial.print("getValue:");
     // Serial.println(bufferLength);
@@ -86,7 +92,7 @@ void loop()
           String command = String(readBuffer);
           //Command Process
           V7RCCommand(command);
-          
+   
           Serial.println("processCommand");
           ifLostSignal = false;
           failSafeCheckTime = 0;  
@@ -105,7 +111,7 @@ void loop()
       }
     }
     
-    bufferLength = Serial.available();
+    bufferLength = Serial2.available();
 
   }
 
